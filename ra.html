@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Holi</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;family=Dancing+Script:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    
+    .app-wrapper {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+    }
+    
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes colorPulse {
+      0%, 100% { filter: brightness(1) saturate(1); }
+      50% { filter: brightness(1.1) saturate(1.2); }
+    }
+    
+    .rainbow-bg {
+      background: linear-gradient(-45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000, #ff7f00);
+      background-size: 400% 400%;
+      animation: gradientMove 8s ease infinite, colorPulse 4s ease-in-out infinite;
+    }
+    
+    .rainbow-text {
+      background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #9400d3, #ff0000);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .scale-in {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+    
+    .btn-rainbow {
+      background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff);
+      background-size: 200% auto;
+      animation: gradientMove 3s linear infinite;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-rainbow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 40px rgba(255, 107, 107, 0.4);
+    }
+    
+    .card-shadow {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 40px rgba(255, 107, 107, 0.2), 0 0 80px rgba(254, 202, 87, 0.1);
+    }
+    
+    .hidden-section { display: none; }
+    .visible-section { display: flex; }
+    
+    .paint-splatter {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      opacity: 0.8;
+      z-index: 5;
+    }
+    
+    @keyframes particleFall {
+      0% { opacity: 1; transform: translate(0, 0) scale(1); }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
+    }
+    
+    .paint-splatter { animation: particleFall 2s ease-out forwards; }
+    
+    .card-image-container {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+      height: 350px;
+    }
+    
+    @media (min-width: 768px) {
+      .card-image-container {
+        height: 420px;
+      }
+    }
+    
+    .card-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full">
+  <div class="app-wrapper rainbow-bg"><!-- Section 1: Welcome Screen -->
+   <section id="welcomeSection" class="visible-section flex-col items-center justify-center min-h-full w-full px-4 py-8 relative overflow-hidden"><!-- Floating Sparkles -->
+    <div class="sparkle bg-yellow-300" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+    <div class="sparkle bg-pink-400" style="top: 20%; right: 20%; animation-delay: 0.5s;"></div>
+    <div class="sparkle bg-green-400" style="bottom: 30%; left: 10%; animation-delay: 1s;"></div>
+    <div class="sparkle bg-blue-400" style="bottom: 20%; right: 15%; animation-delay: 1.5s;"></div>
+    <div class="sparkle bg-purple-400" style="top: 40%; left: 5%; animation-delay: 0.8s;"></div>
+    <div class="sparkle bg-orange-400" style="top: 15%; right: 8%; animation-delay: 1.2s;"></div><!-- Main Content -->
+    <div class="text-center z-10 float-animation"><!-- Decorative Elements -->
+     <div class="flex justify-center gap-4 mb-6"><span class="text-4xl md:text-5xl">🎨</span> <span class="text-4xl md:text-5xl">🌈</span> <span class="text-4xl md:text-5xl">🎉</span>
+     </div><!-- Main Title -->
+     <h1 id="mainTitle" class="text-5xl md:text-7xl lg:text-8xl font-extrabold rainbow-text mb-6 drop-shadow-lg" style="font-family: 'Dancing Script', cursive;">Happy Holi</h1><!-- Subtitle -->
+     <p class="text-white text-lg md:text-xl lg:text-2xl mb-8 font-medium drop-shadow-md" style="font-family: 'Poppins', sans-serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Festival of Colors &amp; Joy ✨</p><!-- Color Dots Decoration -->
+     <div class="flex justify-center gap-3 mb-10">
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-red-500 shadow-lg"></div>
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-orange-500 shadow-lg"></div>
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-yellow-400 shadow-lg"></div>
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-green-500 shadow-lg"></div>
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-blue-500 shadow-lg"></div>
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-purple-500 shadow-lg"></div>
+      <div class="w-4 h-4 md:w-5 md:h-5 rounded-full bg-pink-500 shadow-lg"></div>
+     </div><!-- Next Button --> <button id="nextBtn" class="btn-rainbow text-white font-bold py-4 px-10 md:py-5 md:px-14 rounded-full text-lg md:text-xl shadow-2xl cursor-pointer" style="font-family: 'Poppins', sans-serif;">Next →</button>
+    </div>
+   </section><!-- Section 2: Passage Card -->
+   <section id="cardSection" class="hidden-section flex-col items-center justify-center min-h-full w-full px-4 py-8">
+    <div class="max-w-lg w-full"><!-- Card -->
+     <div id="holiCard" class="bg-white rounded-3xl card-shadow overflow-hidden opacity-0"><!-- Holi Image -->
+      <div class="card-image-container"><img src="https://i.ibb.co/x8mtVqNm/holi.jpg" alt="Happy Holi Celebration" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #ff6b6b 0%, #feca57 25%, #48dbfb 50%, #ff9ff3 75%, #54a0ff 100%)'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center';">
+      </div><!-- Card Content -->
+      <div class="p-6 md:p-8">
+       <h2 id="cardTitle" class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 text-center" style="font-family: 'Poppins', sans-serif;">Happy Holi, Betuu 🌈✨</h2>
+       <p id="cardMessage" class="text-gray-600 text-base md:text-lg leading-relaxed text-justify mb-6 whitespace-pre-line" style="font-family: 'Poppins', sans-serif;">Happy Holi, Betuu 🌈✨ Happy Holi, Betuu! On this beautiful festival of colors, I truly wish that your life always stays as bright and colorful as today. Just like every color of Holi has its own special charm, your smile carries a unique magic that makes everything better. May you have love like red, peace like blue, fresh beginnings like green, and happiness like yellow. And I also want to say sorry for that day. I didn't understand things properly because I was angry. I should have controlled myself better — it was my mistake. I promise I'll try to be calmer and more understanding next time. I'm genuinely sorry for that. 💛 I know I still have a lot to improve, but I genuinely want to work on myself and handle things in a calmer way. I will try to become a better person Once again, Happy Holi. Stay happy and keep shining always. 🌸🌈</p><!-- Decorative Footer -->
+       <div class="flex justify-center gap-2 mb-4">
+        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+        <div class="w-3 h-3 rounded-full bg-blue-400"></div>
+        <div class="w-3 h-3 rounded-full bg-purple-400"></div>
+       </div><!-- Back Button --> <button id="backBtn" class="w-full btn-rainbow text-white font-semibold py-3 px-6 rounded-full text-base shadow-lg cursor-pointer" style="font-family: 'Poppins', sans-serif;">← Back to Celebration</button>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      main_title: "Happy Holi",
+      card_title: "Happy Holi, Betuu 🌈✨",
+      card_message: "Happy Holi, Betuu 🌈✨\n\nHappy Holi, Betuu!\nOn this beautiful festival of colors, I truly wish that your life always stays as bright and colorful as today. Just like every color of Holi has its own special charm, your smile carries a unique magic that makes everything better.\n\nMay you have love like red,\npeace like blue,\nfresh beginnings like green,\nand happiness like yellow.\n\nAnd I also want to say sorry for that day.\nI didn't understand things properly because I was angry. I should have controlled myself better — it was my mistake.\n\nI promise I'll try to be calmer and more understanding next time. I'm genuinely sorry for that. 💛\n\nI know I still have a lot to improve, but I genuinely want to work on myself and handle things in a calmer way. I will try to become a better person\n\nOnce again, Happy Holi. Stay happy and keep shining always. 🌸🌈"
+    };
+    
+    // DOM Elements
+    const welcomeSection = document.getElementById('welcomeSection');
+    const cardSection = document.getElementById('cardSection');
+    const holiCard = document.getElementById('holiCard');
+    const nextBtn = document.getElementById('nextBtn');
+    const backBtn = document.getElementById('backBtn');
+    const mainTitle = document.getElementById('mainTitle');
+    const cardTitle = document.getElementById('cardTitle');
+    const cardMessage = document.getElementById('cardMessage');
+    
+    // Navigation functions
+    function showCard() {
+      welcomeSection.classList.remove('visible-section');
+      welcomeSection.classList.add('hidden-section');
+      cardSection.classList.remove('hidden-section');
+      cardSection.classList.add('visible-section');
+      
+      setTimeout(() => {
+        holiCard.classList.add('scale-in');
+        holiCard.style.opacity = '1';
+      }, 100);
+    }
+    
+    function showWelcome() {
+      holiCard.classList.remove('scale-in');
+      holiCard.style.opacity = '0';
+      
+      setTimeout(() => {
+        cardSection.classList.remove('visible-section');
+        cardSection.classList.add('hidden-section');
+        welcomeSection.classList.remove('hidden-section');
+        welcomeSection.classList.add('visible-section');
+      }, 300);
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', showCard);
+    backBtn.addEventListener('click', showWelcome);
+    
+    // Paint splatter effect on button clicks
+    function createPaintSplatter(event) {
+      const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#ff0000', '#ffff00', '#00ff00', '#0000ff', '#ff7f00'];
+      const rect = event.target.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      
+      for (let i = 0; i < 12; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'paint-splatter';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.width = (Math.random() * 15 + 8) + 'px';
+        particle.style.height = particle.style.width;
+        
+        const angle = (Math.PI * 2 * i) / 12;
+        const velocity = Math.random() * 150 + 100;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity - 50;
+        
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 2000);
+      }
+    }
+    
+    nextBtn.addEventListener('click', createPaintSplatter);
+    backBtn.addEventListener('click', createPaintSplatter);
+    
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          mainTitle.textContent = config.main_title || defaultConfig.main_title;
+          cardTitle.textContent = config.card_title || defaultConfig.card_title;
+          cardMessage.textContent = config.card_message || defaultConfig.card_message;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["main_title", config.main_title || defaultConfig.main_title],
+          ["card_title", config.card_title || defaultConfig.card_title],
+          ["card_message", config.card_message || defaultConfig.card_message]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d68bacf16ffc08b',t:'MTc3MjU0MTgzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
